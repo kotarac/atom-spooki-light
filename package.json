@@ -1,0 +1,11 @@
+{
+  "name": "spooki-light",
+  "theme": "syntax",
+  "description": "Light theme with cool colors. Based on winter-syntax and Mac Classic.",
+  "version": "0.0.0",
+  "repository": "https://github.com/skotarac/atom-spooki-light",
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  }
+}

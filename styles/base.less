@@ -1,0 +1,297 @@
+@import 'syntax-variables';
+
+.editor {
+    font-weight: @font-weight-regular;
+
+    .trailing-whitespace {
+        .error();
+    }
+
+    &,
+    .gutter {
+        background-color: @syntax-background-color;
+        color: @syntax-text-color;
+    }
+
+
+    .cursor-line {
+        .invisible-character {
+            color: @syntax-invisible-character-color;
+        }
+    }
+
+    .indent-guide {
+        box-shadow: inset 1px 0 @syntax-indent-guide-color;
+    }
+
+    .invisible-character {
+        color: transparent;
+    }
+
+    .wrap-guide {
+        background-color: @syntax-wrap-guide-color;
+    }
+
+    .gutter {
+        color: @syntax-gutter-text-color;
+        background: @syntax-gutter-background-color;
+    }
+
+    .gutter .line-number.folded,
+    .gutter .line-number:after,
+    .fold-marker:after {
+        color: #e87b00;
+    }
+
+    .invisible {
+        color: #555;
+    }
+
+    .selection .region {
+        background-color: #e1e1e1;
+    }
+
+    &.is-focused {
+        .cursor {
+            border-color: @syntax-cursor-color;
+        }
+
+        .selection .region {
+            background-color: @syntax-selection-color;
+        }
+
+        .line-number.cursor-line-no-selection,
+        .line.cursor-line {
+            background-color: @syntax-gutter-background-color-selected;
+            background-color: fade(@gray, 5%);
+        }
+    }
+
+    .comment {
+        color: fade(@gray, 75%);
+        color: @gray;
+        font-style: normal;
+    }
+
+    .string {
+        color: @green;
+    }
+
+    .source .string {
+        .source,
+        .meta.embedded.line {
+            color: @bright-green;
+        }
+
+        .punctuation.section.embedded {
+            color: @bright-green;
+
+            .source {
+                color: @bright-green;
+            }
+        }
+
+    }
+
+    .section.embedded.begin,
+    .section.embedded.end {
+        color: @purple;
+        font-weight: @font-weight-bold;
+    }
+
+    .constant {
+        &.numeric {
+            color: @purple;
+        }
+
+        &.language {
+            color: @purple;
+            font-weight: @font-weight-bold;
+        }
+
+        &.symbol,
+        &.character,
+        &.other {
+            color: @purple;
+        }
+
+        &.placeholder {
+            color: @bright-green;
+        }
+
+        &.numeric.line-number.find-in-files .match {
+            color: rgba(143, 190, 0, 0.63);
+        }
+    }
+
+    .variable {
+        color: @syntax-text-color;
+
+        &.parameter {
+            font-style: normal;
+        }
+
+        &.instance {
+            color: @teal;
+        }
+    }
+
+    .keyword {
+        color: @bright-blue;
+        font-weight: @font-weight-bold;
+    }
+
+    .storage {
+        color: @purple;
+        font-weight: @font-weight-bold;
+
+        &.type {
+            color: @purple;
+        }
+
+        &.fixme,
+        &.todo {
+            color: @red;
+        }
+
+        &.changed {
+            color: @orange;
+        }
+    }
+
+    .entity {
+
+        &.name.class {
+            text-decoration: underline;
+        }
+
+        &.other.inherited-class {
+            text-decoration: underline;
+        }
+
+        &.name.function {
+            color: @blue;
+            font-weight: @font-weight-bold;
+        }
+
+        &.name.tag {
+            color: @blue;
+            font-weight: @font-weight-bold;
+        }
+
+        &.other.attribute-name {
+            font-style: normal;
+        }
+
+        &.name.filename.find-in-files {
+            color: #E6DB74;
+        }
+    }
+
+    .invalid {
+        .error();
+    }
+
+
+    .meta {
+        &.structure.dictionary.json > .string.quoted.double.json,
+        &.structure.dictionary.json > .string.quoted.double.json .punctuation.string {
+            color: @syntax-text-color;
+        }
+
+        &.structure.dictionary.value.json > .string.quoted.double.json {
+            color: @green;
+        }
+
+        &.diff,
+        &.diff.header {
+            color: #75715E;
+        }
+    }
+
+    .css {
+        &.support.property-name {
+            color: @blue;
+            font-weight: @font-weight-bold;
+        }
+    }
+
+    .source.gfm {
+        color: #444;
+    }
+
+    .gfm {
+        .markup.heading {
+            color: #111;
+        }
+
+        & .link {
+            color: #888;
+        }
+
+        .variable.list {
+            color: #888;
+        }
+    }
+
+    .markdown {
+        .paragraph {
+            color: #444;
+        }
+
+        .heading {
+            color: #111;
+        }
+
+        .link {
+            color: #888;
+
+            .string {
+                color: #888;
+            }
+        }
+    }
+
+    .search-results .marker .region {
+        background-color: transparent;
+        border: 1px solid @syntax-result-marker-color;
+    }
+    .search-results .marker.current-result .region {
+        border: 1px solid @syntax-result-marker-color-selected;
+    }
+}
+
+.bracket-matcher {
+    background-color: @gray;
+    border: none !important;
+    opacity: 0.8;
+}
+
+.gutter.linter-gutter-enabled .line-number {
+    &.linter-warning:before {
+        color: @orange;
+    }
+
+    &.linter-error:before {
+        color: @red;
+    }
+}
+
+.highlight {
+    &.linter-error,
+    &.linter-warning {
+        .region {
+            opacity: 1;
+            border: none;
+        }
+    }
+
+    &.linter-warning .region {
+        background: @spooki-warning-color;
+        -webkit-mask-image: none;
+    }
+    &.linter-error .region{
+        background: @spooki-error-color;
+        -webkit-mask-image: none;
+    }
+}
